@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages du Cœur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-color: #FFF8F0;
+            --text-color: #2E2E2E;
+            --title-color: #4B3F72;
+            --accent-color: #FF6F61;
+            --button-color: #6C63FF;
+            --hover-color: #F7DAD9;
+            --border-color: #D9D9D9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--title-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .writing-space {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 3rem;
+            margin: 2rem auto;
+            min-height: 60vh;
+            position: relative;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .writing-space:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .writing-space::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50px;
+            right: 50px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+            opacity: 0.3;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--button-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .back-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .writing-prompt {
+            text-align: center;
+            color: var(--text-color);
+            opacity: 0.7;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .writing-space {
+                padding: 2rem;
+                min-height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💌 Messages du Cœur</h1>
+            <p class="writing-prompt">Un espace pour exprimer ce que les mots peinent parfois à dire...</p>
+        </header>
+
+        <div class="writing-space">
+            <!-- L'espace d'écriture reste vide intentionnellement -->
+        </div>
+
+        <div style="text-align: center;">
+            <a href="anniversary.html" class="back-button">Retour à l'accueil</a>
+        </div>
+    </div>
+</body>
+</html>

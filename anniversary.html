@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Toi - Un Message du Cœur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-color: #FFF8F0;
+            --text-color: #2E2E2E;
+            --title-color: #4B3F72;
+            --accent-color: #FF6F61;
+            --button-color: #6C63FF;
+            --hover-color: #F7DAD9;
+            --border-color: #D9D9D9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--title-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .full-width-section {
+            grid-column: 1 / -1;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        @media (max-width: 768px) {
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0;
+            background-color: white;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .intro {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 2rem;
+            line-height: 1.8;
+        }
+
+        .section {
+            margin: 4rem 0;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            text-decoration: none;
+            display: block;
+            border: 1px solid var(--border-color);
+        }
+
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+            background-color: var(--hover-color);
+        }
+
+        .section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            opacity: 0;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.05));
+            transition: opacity 0.3s ease;
+        }
+
+        .section:hover::after {
+            opacity: 1;
+        }
+
+        .section h2 {
+            margin-bottom: 1rem;
+            color: var(--title-color);
+        }
+
+        .section p {
+            color: var(--text-color);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .verse {
+            background-color: var(--accent-color);
+            padding: 2rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .letter {
+            font-style: italic;
+            padding: 2rem;
+            border-left: 4px solid var(--accent-color);
+            margin: 1rem 0;
+            background-color: rgba(255, 111, 97, 0.05);
+        }
+
+        #music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--button-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #music-player:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .sections-grid a span {
+            background-color: var(--button-color) !important;
+            transition: background-color 0.3s ease;
+        }
+
+        .sections-grid a:hover span {
+            background-color: var(--accent-color) !important;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Pour Toi</h1>
+            <p class="intro">
+                Un espace créé avec amour et gratitude, pour célébrer notre chemin partagé et exprimer ce que les mots seuls peinent parfois à dire.
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="sections-grid">
+            <a href="galerie.html" class="section" id="gallery">
+                <h2>📸 Nos Moments Précieux</h2>
+                <p style="text-align: center; margin: 2rem 0;">
+                    <span style="display: inline-block; padding: 1rem 2rem; background-color: var(--button-color); color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">
+                        Voir toutes les photos
+                    </span>
+                </p>
+            </a>
+
+            <a href="jenesaispasecrire.html" class="section" id="letters">
+                <h2>💌 Messages du Cœur</h2>
+                <div class="letter">
+                    <p>Chaque jour passé à tes côtés est un cadeau du ciel...</p>
+                </div>
+                <p style="text-align: center; margin: 1rem 0;">
+                    <span style="display: inline-block; padding: 1rem 2rem; background-color: var(--button-color); color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">
+                        Lire les messages
+                    </span>
+                </p>
+            </a>
+
+            <div class="section" id="vision">
+                <h2>🌅 Notre Avenir</h2>
+                <p>Avec foi et amour, regardons vers l'horizon qui nous attend...</p>
+            </div>
+
+            <div class="section" id="video">
+                <h2>🎥 Nos Souvenirs en Mouvement</h2>
+                <div class="video-container">
+                    <!-- Option 1: Pour une vidéo YouTube -->
+                    <iframe src="https://www.youtube.com/embed/VOTRE_ID_VIDEO" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+
+                    <!-- Option 2: Pour une vidéo hébergée localement -->
+                    <!--
+                    <video controls>
+                        <source src="chemin_vers_votre_video.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                    -->
+                </div>
+            </div>
+
+            <div class="section" id="contact">
+                <h2>📞 Un Dernier Mot</h2>
+                <p>Ce site est une fenêtre ouverte sur mon cœur, un témoignage de gratitude pour ta présence dans ma vie.</p>
+            </div>
+        </div>
+    </main>
+
+    <div id="music-player">
+        🎵
+        <audio id="background-music" loop>
+            <source src="music.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <script>
+        const musicPlayer = document.getElementById('music-player');
+        const audio = document.getElementById('background-music');
+        let isPlaying = false;
+
+        musicPlayer.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                musicPlayer.textContent = '🎵';
+            } else {
+                audio.play();
+                musicPlayer.textContent = '⏸';
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>
