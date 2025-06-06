@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pour Toi - Un Message du Cœur</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --background-color: #FFF8F0;
@@ -14,6 +14,9 @@
             --button-color: #6C63FF;
             --hover-color: #F7DAD9;
             --border-color: #D9D9D9;
+            --lavender: #e6e6fa;
+            --violet: #b39ddb;
+            --rose: #f7c6d9;
         }
 
         * {
@@ -23,15 +26,52 @@
         }
 
         body {
-            font-family: 'Lato', sans-serif;
-            line-height: 1.6;
+            font-family: 'Poppins', 'Inter', Arial, sans-serif;
+            line-height: 1.7;
             color: var(--text-color);
-            background-color: var(--background-color);
+            background: linear-gradient(120deg, var(--rose) 0%, var(--lavender) 100%);
+            font-size: 1.08rem;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+        h1 {
+            font-family: 'Great Vibes', 'Dancing Script', cursive;
+            font-size: 4.2rem;
+            font-weight: 400;
+            letter-spacing: 2px;
             color: var(--title-color);
+            background: linear-gradient(90deg, var(--title-color) 60%, var(--button-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 8px rgba(75,63,114,0.08);
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-family: 'Dancing Script', 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--title-color);
+            background: linear-gradient(90deg, var(--title-color) 60%, var(--button-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.7rem;
+            line-height: 1.15;
+        }
+
+        h3 {
+            font-family: 'Dancing Script', 'Great Vibes', cursive;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--title-color);
+            background: linear-gradient(90deg, var(--title-color) 60%, var(--button-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
 
         .container {
@@ -64,6 +104,10 @@
             padding: 4rem 0;
             background-color: white;
             border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 8px 32px rgba(75, 63, 114, 0.08);
+            border-radius: 0 0 24px 24px;
+            margin-bottom: 2rem;
+            background: linear-gradient(180deg, var(--lavender) 0%, white 80%);
         }
 
         .intro {
@@ -71,44 +115,57 @@
             margin: 0 auto;
             text-align: center;
             padding: 2rem;
+            font-size: 1.18rem;
             line-height: 1.8;
         }
 
         .section {
             margin: 4rem 0;
             padding: 2rem;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: linear-gradient(120deg, white 70%, var(--lavender) 100%);
+            border-radius: 18px;
+            box-shadow: 0 4px 16px rgba(75, 63, 114, 0.07);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(.4,2,.6,1);
             position: relative;
             text-decoration: none;
             display: block;
             border: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s forwards;
+            will-change: transform, box-shadow;
+            font-size: 1.08rem;
+            line-height: 1.7;
+        }
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .section:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 24px 48px 0 rgba(108,99,255,0.13), 0 2px 8px rgba(255, 111, 97, 0.10);
             background-color: var(--hover-color);
         }
 
-        .section::after {
+        .section:not(:last-child)::after {
             content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            opacity: 0;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.05));
-            transition: opacity 0.3s ease;
-        }
-
-        .section:hover::after {
-            opacity: 1;
+            display: block;
+            margin: 2.5rem auto 0 auto;
+            width: 60px;
+            height: 4px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--accent-color), var(--button-color));
+            opacity: 0.15;
         }
 
         .section h2 {
@@ -118,6 +175,29 @@
 
         .section p {
             color: var(--text-color);
+        }
+
+        .sections-grid a span,
+        .section p span {
+            background: linear-gradient(90deg, var(--button-color) 60%, var(--violet) 100%) !important;
+            transition: background 0.3s, box-shadow 0.3s, transform 0.25s cubic-bezier(.4,2,.6,1);
+            border-radius: 32px !important;
+            box-shadow: 0 2px 8px rgba(108, 99, 255, 0.10);
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            outline: none;
+        }
+        .sections-grid a:hover span,
+        .section:hover p span {
+            background: linear-gradient(90deg, var(--accent-color) 60%, var(--button-color) 100%) !important;
+            box-shadow: 0 4px 16px rgba(255, 111, 97, 0.12);
+            transform: scale(1.08) translateY(-2px);
+        }
+        .sections-grid a span:active, .sections-grid a span:focus,
+        .section p span:active, .section p span:focus {
+            box-shadow: 0 0 0 6px rgba(255, 111, 97, 0.18), 0 4px 16px rgba(255, 111, 97, 0.12);
+            background: linear-gradient(90deg, var(--accent-color) 60%, var(--button-color) 100%) !important;
         }
 
         .gallery {
@@ -133,6 +213,7 @@
             border-radius: 8px;
             transition: transform 0.3s ease;
             border: 1px solid var(--border-color);
+            font-size: 1.02rem;
         }
 
         .gallery-item:hover {
@@ -153,6 +234,8 @@
             border-left: 4px solid var(--accent-color);
             margin: 1rem 0;
             background-color: rgba(255, 111, 97, 0.05);
+            font-size: 1.08rem;
+            line-height: 1.7;
         }
 
         /* Styles pour l'animation d'anniversaire */
@@ -192,10 +275,11 @@
         }
 
         .birthday-text {
-            font-size: 1.5rem;
+            font-size: 1.15rem;
             margin-top: 2rem;
             color: var(--title-color);
             animation: color-change 2s infinite;
+            line-height: 1.6;
         }
 
         @keyframes color-change {
@@ -222,15 +306,6 @@
             transform: scale(1.1);
         }
 
-        .sections-grid a span {
-            background-color: var(--button-color) !important;
-            transition: background-color 0.3s ease;
-        }
-
-        .sections-grid a:hover span {
-            background-color: var(--accent-color) !important;
-        }
-
         .video-container {
             position: relative;
             width: 100%;
@@ -249,12 +324,91 @@
             height: 100%;
             border: none;
         }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0 1rem 0;
+            color: var(--title-color);
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            background: none;
+        }
+
+        /* Icônes animées personnalisées */
+        .icon-heartbeat {
+            display: inline-block;
+            color: #FF6F61;
+            font-size: 1.5em;
+            vertical-align: middle;
+            animation: heartbeat 1.2s infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.2); }
+            20%, 40% { transform: scale(0.95); }
+            50% { transform: scale(1.1); }
+        }
+        .icon-envelope {
+            display: inline-block;
+            font-size: 1.3em;
+            vertical-align: middle;
+            position: relative;
+            animation: envelope-bounce 2s infinite;
+        }
+        @keyframes envelope-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .icon-camera {
+            display: inline-block;
+            font-size: 1.3em;
+            vertical-align: middle;
+            position: relative;
+        }
+        .icon-camera .camera-reflect {
+            position: absolute;
+            left: 0.55em;
+            top: 0.32em;
+            width: 0.35em;
+            height: 0.18em;
+            background: linear-gradient(120deg, #fff 60%, #b39ddb 100%);
+            border-radius: 50%;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        /* Apparition en fondu avec AOS.js */
+        [data-aos] {
+            opacity: 0;
+            transition-property: opacity, transform;
+            transition-duration: 1s;
+            transition-timing-function: cubic-bezier(.4,2,.6,1);
+        }
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Petit cœur animé à côté du titre */
+        .heart-title {
+            font-size: 1.6rem;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            color: #FF6F61;
+            animation: heartbeat 1.2s infinite;
+            display: inline-block;
+            position: relative;
+            top: -0.5rem;
+        }
     </style>
+    <!-- Animation On Scroll (AOS.js) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 </head>
 <body>
     <header>
         <div class="container">
             <h1>Pour Toi</h1>
+            <span class="icon-heartbeat heart-title">❤️</span>
             <p class="intro">
                 Un espace créé avec amour et gratitude, pour célébrer notre chemin partagé et exprimer ce que les mots seuls peinent parfois à dire.
             </p>
@@ -263,8 +417,8 @@
 
     <main class="container">
         <div class="sections-grid">
-            <a href="galerie.html" class="section" id="gallery">
-                <h2>📸 Nos Moments Précieux</h2>
+            <a href="galerie.html" class="section" id="gallery" data-aos="fade-up">
+                <h2><span class="icon-camera">📸<span class="camera-reflect"></span></span> Tes photos</h2>
                 <p style="text-align: center; margin: 2rem 0;">
                     <span style="display: inline-block; padding: 1rem 2rem; background-color: var(--button-color); color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">
                         Voir toutes les photos
@@ -272,8 +426,8 @@
                 </p>
             </a>
 
-            <a href="jenesaispasecrire.html" class="section" id="letters">
-                <h2>💌 Messages du Cœur</h2>
+            <a href="jenesaispasecrire.html" class="section" id="letters" data-aos="fade-up" data-aos-delay="100">
+                <h2><span class="icon-envelope">💌</span> Messages du Cœur</h2>
                 <div class="letter">
                     <p>Chaque jour passé à tes côtés est un cadeau du ciel...</p>
                 </div>
@@ -284,8 +438,8 @@
                 </p>
             </a>
 
-            <div class="section" id="vision">
-                <h2>🎂 Joyeux Anniversaire</h2>
+            <div class="section" id="vision" data-aos="fade-up" data-aos-delay="200">
+                <h2>🎂 Joyeux Anniversaire <span class="icon-heartbeat">❤️</span></h2>
                 <div class="birthday-container">
                     <div class="confetti"></div>
                     <div class="confetti"></div>
@@ -297,8 +451,8 @@
                 </div>
             </div>
 
-            <a href="video.html" class="section" id="video">
-                <h2>🎥 Nos Souvenirs en Mouvement</h2>
+            <a href="video.html" class="section" id="video" data-aos="fade-up" data-aos-delay="300">
+                <h2>🎥 Une beauté en Mouvement</h2>
                 <div class="video-container">
                     <!-- Option 1: Pour une vidéo YouTube -->
                     <iframe src="https://www.youtube.com/embed/VOTRE_ID_VIDEO" 
@@ -313,7 +467,7 @@
                 </p>
             </a>
 
-            <div class="section" id="contact">
+            <div class="section" id="contact" data-aos="fade-up" data-aos-delay="400">
                 <h2>📞 Un Dernier Mot</h2>
                 <p>Ce site est une fenêtre ouverte sur mon cœur, un témoignage de gratitude pour ta présence dans ma vie.</p>
             </div>
@@ -341,6 +495,18 @@
                 musicPlayer.textContent = '⏸';
             }
             isPlaying = !isPlaying;
+        });
+    </script>
+    <footer>
+        <div>Avec tout mon amour &mdash; <span style="color:var(--accent-color);">Pour Toi</span> &bull; <span style="font-size:1.2em;">&#10084;&#65039;</span></div>
+    </footer>
+    <!-- Animation On Scroll (AOS.js) -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 900,
+            easing: 'cubic-bezier(.4,2,.6,1)'
         });
     </script>
 </body>
