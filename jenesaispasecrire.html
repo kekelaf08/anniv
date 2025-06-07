@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages du Cœur</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --background-color: #FFF8F0;
@@ -22,17 +22,28 @@
             box-sizing: border-box;
         }
 
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            filter: blur(8px) brightness(1.1) saturate(1.2);
+            opacity: 0.6;
+        }
+
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Poppins', 'Lato', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background-color: var(--background-color);
+            background: linear-gradient(135deg, #f8e1f4 0%, #fff8f0 100%);
             min-height: 100vh;
             padding: 2rem;
+            font-size: 1.25rem;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -51,7 +62,7 @@
 
         .writing-space {
             background-color: white;
-            border-radius: 15px;
+            border-radius: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             padding: 3rem;
             margin: 2rem auto;
@@ -59,6 +70,23 @@
             position: relative;
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
+            font-size: 1.3rem;
+            opacity: 0;
+            animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.2s forwards;
+            max-width: 90vw;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .writing-space:hover {
@@ -84,13 +112,14 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             margin-top: 2rem;
         }
 
         .back-button:hover {
             background-color: var(--accent-color);
-            transform: translateY(-2px);
+            transform: scale(1.07) translateY(-4px);
+            box-shadow: 0 6px 24px rgba(255,111,97,0.13);
         }
 
         .writing-prompt {
@@ -101,6 +130,36 @@
             margin-bottom: 2rem;
         }
 
+        .writing-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.7rem;
+            color: var(--title-color);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .writing-icon {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.5rem;
+            font-size: 2.1rem;
+            opacity: 0.7;
+            user-select: none;
+        }
+
+        .signature {
+            position: absolute;
+            right: 2rem;
+            left: auto;
+            bottom: 1.2rem;
+            font-style: italic;
+            color: #7a6c8a;
+            font-size: 1.1rem;
+            opacity: 0.85;
+            letter-spacing: 0.5px;
+            text-align: right;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -109,6 +168,10 @@
             .writing-space {
                 padding: 2rem;
                 min-height: 50vh;
+                font-size: 1.05rem;
+            }
+            .writing-title {
+                font-size: 2.1rem;
             }
         }
     </style>
@@ -121,9 +184,11 @@
         </header>
 
         <div class="writing-space">
-            <h1>Je ne sais pas écrire</h1>
+            <span class="writing-icon" aria-label="icône cœur">💌</span>
+            <h1 class="writing-title">Je ne sais pas écrire</h1>
             Je ne sais pas écrire mais c'est l'un des moyens utilisés pour pouvoir exprimer ce que l'on ressent. Noëmie, même si la date exacte de notre rencontre ne se répertorie pas dans mes souvenirs, la seule chose dont je vais me rappeler, ce sont nos premiers mots, lettres ou syllabes. C'est peut-être fou de se dire qu'on s'est rencontrés à travers une petite boîte animée, mais peut-être pourrais-je remercier celui qui a créé ces boîtes, bref... Je sais que je te l'ai dit plusieurs fois mais tu es l'une des plus belles choses qui me soit arrivée. On est passé par beaucoup d'épreuves, mais plus on les affrontait, plus cela nous rendait plus forts. Bon ce n'est pas "nous" la vedette de ce jour mais c'est "toi". Je remercie Dieu de t'avoir mise sur ma route, tu es celle qui a accepté un passé lourd comme le mien, par tes efforts tu me donnes envie de toujours me dépasser et tu as l'une des caractéristiques que chaque "homme de Dieu" cherche, la crainte de l'Éternel. Je crois que tu ne comprends pas les choses que tu apportes à ma vie de tous les jours. Merci d'apporter tout ce positif dans ma vie, je prie pour que Dieu te garde, te fortifie, qu'il te dirige près des eaux paisibles, que comme avec Nathaniel qu'il ne détourne point sa face de toi et de ta famille, qu'il t'accorde l'une des plus grandes bénédictions "la santé", mais aussi la maturité spirituelle. 
             Bon après que pourrais-je dire, Je t'aime Noëmie et je souhaite que ce soit le jour de "bwè gato, manje divin". <!-- L'espace d'écriture reste vide intentionnellement -->
+            <span class="signature">Lafleur Akémi Jovany</span>
         </div>
 
         <div style="text-align: center;">

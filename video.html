@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nos Moments en Vidéo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&family=Lora:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
             --background-color: #FFF8F0;
@@ -23,7 +23,7 @@
         }
 
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Lora', 'Lato', serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--background-color);
@@ -43,17 +43,21 @@
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Dancing Script', 'Playfair Display', serif;
             color: var(--title-color);
-            font-size: 2.5rem;
+            font-size: 2.7rem;
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            gap: 3.5rem 2rem;
+            margin: 2.5rem 0;
             padding: 0 1rem;
         }
 
@@ -92,6 +96,39 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+            border-radius: 15px;
+            transition: filter 0.3s;
+        }
+
+        .video-wrapper:hover video {
+            filter: brightness(0.95) blur(1px) drop-shadow(0 4px 12px rgba(0,0,0,0.10));
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.85;
+            transition: opacity 0.3s;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-wrapper:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-overlay svg {
+            width: 56px;
+            height: 56px;
+            fill: #fff;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25));
         }
 
         .video-title {
@@ -122,10 +159,11 @@
             .video-grid {
                 grid-template-columns: 1fr;
                 padding: 0;
+                gap: 2.5rem 0;
             }
             
             .video-container {
-                padding: 1rem;
+                padding: 1.5rem;
             }
 
             .video-wrapper {
@@ -141,19 +179,71 @@
         video::-webkit-media-controls-fullscreen-button {
             display: block;
         }
+
+        .hearts {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .heart {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            opacity: 0.7;
+            pointer-events: none;
+            animation: floatHeart 6s linear forwards;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: scale(0.8) translateY(0);
+                opacity: 0.7;
+            }
+            80% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.2) translateY(-120vh);
+                opacity: 0;
+            }
+        }
+
+        .card {
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff;
+            padding: 2.5rem 2rem;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes fadeInUp {
+            0% {opacity: 0; transform: translateY(20px);}
+            100% {opacity: 1; transform: translateY(0);}
+        }
     </style>
 </head>
 <body>
+    <div class="hearts"></div>
     <div class="container">
         <header>
-            <h1>🎥 Nos Moments en Vidéo</h1>
+            <h1><span>Nos Moments en Vidéo</span> <span style="font-size:1.5em;">🎞️</span></h1>
             <p>Des instants précieux capturés en mouvement...</p>
         </header>
 
         <div class="video-grid">
             <!-- Première vidéo -->
-            <div class="video-container">
+            <div class="video-container card">
                 <div class="video-wrapper">
+                    <div class="play-overlay">
+                        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,0.32)"/><polygon points="26,18 50,32 26,46" fill="#fff"/></svg>
+                    </div>
                     <video controls preload="metadata" playsinline controlsList="nodownload" disablePictureInPicture>
                         <source src="b.mp4" type="video/mp4">
                         Votre navigateur ne supporte pas la lecture de vidéos.
@@ -163,8 +253,11 @@
             </div>
 
             <!-- Deuxième vidéo -->
-            <div class="video-container">
+            <div class="video-container card">
                 <div class="video-wrapper">
+                    <div class="play-overlay">
+                        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,0.32)"/><polygon points="26,18 50,32 26,46" fill="#fff"/></svg>
+                    </div>
                     <video controls preload="metadata" playsinline controlsList="nodownload" disablePictureInPicture>
                         <source src="b2.mp4" type="video/mp4">
                         Votre navigateur ne supporte pas la lecture de vidéos.
@@ -174,8 +267,11 @@
             </div>
 
             <!-- Troisième vidéo -->
-            <div class="video-container">
+            <div class="video-container card">
                 <div class="video-wrapper">
+                    <div class="play-overlay">
+                        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,0.32)"/><polygon points="26,18 50,32 26,46" fill="#fff"/></svg>
+                    </div>
                     <video controls preload="metadata" playsinline controlsList="nodownload" disablePictureInPicture>
                         <source src="b3.mp4" type="video/mp4">
                         Votre navigateur ne supporte pas la lecture de vidéos.
@@ -185,8 +281,11 @@
             </div>
 
             <!-- Quatrième vidéo -->
-            <div class="video-container">
+            <div class="video-container card">
                 <div class="video-wrapper">
+                    <div class="play-overlay">
+                        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,0.32)"/><polygon points="26,18 50,32 26,46" fill="#fff"/></svg>
+                    </div>
                     <video controls preload="metadata" playsinline controlsList="nodownload" disablePictureInPicture>
                         <source src="noemie.mp4" type="video/mp4">
                         Votre navigateur ne supporte pas la lecture de vidéos.
@@ -196,8 +295,11 @@
             </div>
 
             <!-- Cinquième vidéo -->
-            <div class="video-container">
+            <div class="video-container card">
                 <div class="video-wrapper">
+                    <div class="play-overlay">
+                        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,0.32)"/><polygon points="26,18 50,32 26,46" fill="#fff"/></svg>
+                    </div>
                     <video controls preload="metadata" playsinline controlsList="nodownload" disablePictureInPicture>
                         <source src="darla.mp4" type="video/mp4">
                         Votre navigateur ne supporte pas la lecture de vidéos.
@@ -206,14 +308,18 @@
                 <h3 class="video-title">Darla</h3>
             </div>
             <!-- Cinquième vidéo -->
-            <div class="video-container">
+            <div class="video-container card">
                 <div class="video-wrapper">
+                    <div class="play-overlay">
+                        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,0.32)"/><polygon points="26,18 50,32 26,46" fill="#fff"/></svg>
+                    </div>
                     <video controls preload="metadata" playsinline controlsList="nodownload" disablePictureInPicture>
                         <source src="god-loves-you.mp4" type="video/mp4">
                         Votre navigateur ne supporte pas la lecture de vidéos.
                     </video>
                 </div>
                 <h3 class="video-title">God Loves You</h3>
+            </div>
         </div>
 
         <div style="text-align: center;">
